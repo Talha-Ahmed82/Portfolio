@@ -640,14 +640,18 @@
         gap: 28px;
       }
 
-      .project-card {
-        background: var(--glass);
-        border: 1px solid var(--glass-border);
-        border-radius: var(--radius);
-        overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
-      }
+      .project-card.hidden-project {
+  display: none;
+}
+
+     .project-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
 
       .project-card:hover {
         transform: translateY(-8px) scale(1.01);
@@ -669,7 +673,7 @@
         overflow: hidden;
         align-items: center;
         justify-content: center;
-        font-size: 48px;
+        /* font-size: 48px; */
         transition: transform 0.6s ease;
       }
       .project-image-inner img {
@@ -685,23 +689,23 @@
       }
 
       .project-card:hover .project-image-inner {
-        transform: scale(1.05);
+        transform: scale(1.03);
       }
 
-      .project-image-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to bottom,
-          transparent,
-          rgba(10, 10, 15, 0.9)
-        );
-        display: flex;
-        align-items: flex-end;
-        padding: 24px;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
+     .project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(10, 10, 15, 0.9)
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
       .project-card:hover .project-image-overlay {
         opacity: 1;
@@ -713,17 +717,18 @@
 
       .project-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 700;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         letter-spacing: -0.3px;
+        line-height: 1.3;
       }
 
       .project-desc {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--text-secondary);
-        line-height: 1.6;
-        margin-bottom: 16px;
+        line-height: 1.7;
+        margin-bottom: 18px;
       }
 
       .project-tags {
@@ -732,46 +737,70 @@
         flex-wrap: wrap;
       }
 
-      .tag {
-        padding: 4px 12px;
-        background: rgba(108, 92, 231, 0.1);
-        border: 1px solid rgba(108, 92, 231, 0.2);
-        border-radius: 100px;
-        font-size: 11px;
-        color: var(--accent);
-        font-weight: 500;
-      }
+     .tag {
+  padding: 5px 12px;
+  background: rgba(108, 92, 231, 0.1);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  border-radius: 100px;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+}
 
-      .project-links {
-        display: flex;
-        gap: 12px;
-        margin-top: 16px;
-      }
+     .project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
 
-      .project-link {
-        padding: 8px 18px;
-        border-radius: 100px;
-        font-size: 12px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s;
-      }
+.project-link {
+  padding: 9px 18px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
-      .project-link.live {
-        background: var(--accent);
-        color: #fff;
-      }
+.project-link.live {
+  background: var(--accent);
+  color: #fff;
+}
 
-      .project-link.code {
-        background: var(--glass);
-        color: var(--text-secondary);
-        border: 1px solid var(--glass-border);
-      }
+.project-link.code {
+  background: var(--glass);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+}
 
-      .project-link:hover {
-        transform: translateY(-1px);
-      }
-
+.project-link:hover {
+  transform: translateY(-2px);
+}
+.projects-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.show-more-btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    #8b5cf6
+  );
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.25);
+}
+.show-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(108, 92, 231, 0.35);
+}
       /* Timeline (Experience + Education) */
       .timeline {
         position: relative;
@@ -1069,6 +1098,49 @@
         background-repeat: repeat;
         background-size: 256px 256px;
       }
+
+      @media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-body {
+    padding: 20px;
+  }
+
+  .project-title {
+    font-size: 20px;
+  }
+
+  .project-desc {
+    font-size: 13px;
+  }
+
+  .project-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    gap: 20px;
+  }
+
+  .project-title {
+    font-size: 18px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .show-more-btn {
+    width: 100%;
+  }
+}
 
       /* Responsive */
       @media (max-width: 1024px) {
@@ -1481,7 +1553,7 @@
             <div class="section-label">Selected Work</div>
             <h2 class="section-title">Recent projects</h2>
           </div>
-          <div class="projects-grid">
+          <div class="projects-grid" id="projectsGrid">
             <div class="project-card reveal" id="p1">
               <div class="project-image">
                 <div class="project-image-inner">
@@ -1507,6 +1579,7 @@
                   <span class="tag">User Dashboard</span>
                   <span class="tag">Admin Dashboard</span>
                   <span class="tag">API Integration</span>
+                   <span class="tag">Mongodb</span>
                   <span class="tag">Context API</span>
                 </div>
                 <div class="project-links">
@@ -1543,6 +1616,7 @@
                   <span class="tag">User Dashboard</span>
                   <span class="tag">Admin Dashboard</span>
                   <span class="tag">API Integration</span>
+                   <span class="tag">Mongodb</span>
                   <span class="tag">Context API</span>
                 </div>
                 <div class="project-links">
@@ -1581,6 +1655,7 @@
                   <span class="tag">Meeting Dashboard</span>
                   <span class="tag">Meeting Environment</span>
                   <span class="tag">API Integration</span>
+                   <span class="tag">Mongodb</span>
                   <span class="tag">Context API</span>
                 </div>
                 <div class="project-links">
@@ -1620,6 +1695,7 @@
                   <span class="tag">User Dashboard</span>
                   <!-- <span class="tag">Admin Dashboard</span> -->
                   <span class="tag">API Integration</span>
+                   <span class="tag">Mongodb</span>
                   <span class="tag">Context API</span>
                 </div>
                 <div class="project-links">
@@ -1628,7 +1704,154 @@
                 </div>
               </div>
             </div>
+             <div class="project-card reveal hidden-project">
+   <div class="project-image">
+                <div class="project-image-inner">
+                  <img src="./hashfor-2-pic.png" alt="Hashfor-Project" />
+                </div>
+                <div class="project-image-overlay">
+                  <!-- <span style="color: #fff; font-size: 13px"
+                    >Hover for details</span
+                  > -->
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-title">Hashfor</div>
+                <div class="project-desc">
+                  Unlock life-changing opportunities through crypto education, digital skill-building, and a unique earning ecosystem designed for ambitious learners worldwide.
+                </div>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Tailwind</span>
+                  <span class="tag">User Dashboard</span>
+                   <span class="tag">Admin Dashboard</span>
+                  <span class="tag">API Integration</span>
+                   <span class="tag">Mongodb</span>
+                  <span class="tag">Context API</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    target="_blank"
+                    href="https://hashfor-pvxu.vercel.app/"
+                    class="project-link live"
+                    >Live Demo</a
+                  >
+                  <!-- <a href="#" class="project-link code">Source Code</a> -->
+                </div>
+              </div>
+            </div>
+             <div class="project-card reveal hidden-project">
+     <div class="project-image">
+                <div class="project-image-inner">
+                  <img src="./cybercity-pic.png" alt="Cybercity-Project" />
+                </div>
+                <div class="project-image-overlay">
+                  <!-- <span style="color: #fff; font-size: 13px"
+                    >Hover for details</span
+                  > -->
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-title">CyberCity</div>
+                <div class="project-desc">
+                  Advanced Security Audit Agent to Protect Your Website from Cyber Threats
+
+                </div>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Tailwind</span>
+                  <span class="tag">API Integration</span>
+                  <span class="tag">Context API</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    target="_blank"
+                    href="https://vulnerability-dun.vercel.app/"
+                    class="project-link live"
+                    >Live Demo</a
+                  >
+                  <!-- <a href="#" class="project-link code">Source Code</a> -->
+                </div>
+              </div>
+            </div>
+              <div class="project-card reveal hidden-project">
+   <div class="project-image">
+                <div class="project-image-inner">
+                  <img src="./brooklyn-pic.png" alt="Hashfor-Project" />
+                </div>
+                <div class="project-image-overlay">
+                  <!-- <span style="color: #fff; font-size: 13px"
+                    >Hover for details</span
+                  > -->
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-title">Brooklyn</div>
+                <div class="project-desc">
+                  Brooklyn Designs Is Where Bold Ideas Get Structure. We Build Brands That Carry Weight And Digital Experiences That Actually Perform. No Trends, No Filler, Just Work That Earns Attention And Keeps It.
+                </div>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Tailwind</span>
+                  <span class="tag">Framer Motion</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    target="_blank"
+                    href="https://marketing-web-beta-orpin.vercel.app/"
+                    class="project-link live"
+                    >Live Demo</a
+                  >
+                  <!-- <a href="#" class="project-link code">Source Code</a> -->
+                </div>
+              </div>
+            </div>
+              <div class="project-card reveal hidden-project">
+   <div class="project-image">
+                <div class="project-image-inner">
+                  <img src="./techoutlet-pic.png" alt="Hashfor-Project" />
+                </div>
+                <div class="project-image-overlay">
+                  <!-- <span style="color: #fff; font-size: 13px"
+                    >Hover for details</span
+                  > -->
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-title">Techoutlet</div>
+                <div class="project-desc">
+                 Your Phone Fixed Today! From cracked screens to software glitches, we handle it all. Quick, affordable, and professional mobile repair — right when you need it.
+                </div>
+                <div class="project-tags">
+                  <span class="tag">React.js</span>
+                  <span class="tag">Tailwind</span>
+                 <span class="tag">Admin Dashboard</span>
+                  <span class="tag">API Integration</span>
+                  <span class="tag">Context API</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">Mongodb</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    target="_blank"
+                    href="https://techoutlet.uk/"
+                    class="project-link live"
+                    >Live Demo</a
+                  >
+                  <!-- <a href="#" class="project-link code">Source Code</a> -->
+                </div>
+              </div>
+            </div>
+  </div>
+
+ 
+  </div>
           </div>
+          <div class="projects-btn-wrap">
+  <button class="show-more-btn" id="toggleProjectsBtn">
+    Show More Projects
+  </button>
+</div>
         </div>
       </section>
 
@@ -2148,6 +2371,26 @@
             target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         });
+      });
+
+      // ============================================================
+      //  SHOW MORE PROJECTS
+      // ============================================================
+      const toggleBtn = document.getElementById("toggleProjectsBtn");
+      const hiddenProjects = document.querySelectorAll(".hidden-project");
+
+      let expanded = false;
+
+      toggleBtn.addEventListener("click", () => {
+        expanded = !expanded;
+
+        hiddenProjects.forEach((project) => {
+          project.style.display = expanded ? "block" : "none";
+        });
+
+        toggleBtn.textContent = expanded
+          ? "Show Less"
+          : "Show More Projects";
       });
     </script>
   </body>
